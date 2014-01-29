@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.clay.listeners.FurnaceListener;
 import com.clay.utilitys.ClayVersion;
 
 /**
@@ -25,9 +26,17 @@ public class Clay {
 	private static String PLUGIN_MESSAGE_HEADER = "";
 	private static World bukkit_world;
 	
+	/*
+	 * Internal Listener's
+	 */
+	private static FurnaceListener furnace_listener;
+	
 	public static void onEnable() {
 		
 		ClayPermission.onEnable();
+		
+		// Setup Internal Listeners
+		furnace_listener = new FurnaceListener();
 		
 		// Print disclaimer message
 		ClayMessenger.sendConsole(ChatColor.YELLOW + " ******************************************** ");

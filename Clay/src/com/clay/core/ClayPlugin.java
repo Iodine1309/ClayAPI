@@ -20,8 +20,6 @@ public class ClayPlugin extends JavaPlugin {
 		 * Attach Clay library listeners
 		 */
 		Clay.onEnable();
-		
-		
 	}
 	
 	@Override 
