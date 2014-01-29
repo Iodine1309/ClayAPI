@@ -39,25 +39,15 @@ public class Clay {
 		furnace_listener = new FurnaceListener();
 		
 		// Print disclaimer message
-		ClayMessenger.sendConsole(ChatColor.YELLOW + " ******************************************** ");
-		ClayMessenger.sendConsole(ChatColor.WHITE +  "  THIS PLUGIN USES THE CLAY API WHICH DOES    ");
-		ClayMessenger.sendConsole(ChatColor.WHITE +  "  ACCESS FILES OUTSIDE OF THE 'PLUGIN DATA'   ");
-		ClayMessenger.sendConsole(ChatColor.WHITE +  "  DIRECTORY. THIS MESSAGE IS JUST TO WARN     ");
-		ClayMessenger.sendConsole(ChatColor.WHITE +  "  YOU! THE FILES ARE FOR INTERNAL USE AND     ");
-		ClayMessenger.sendConsole(ChatColor.WHITE +  "  DOES NOT POSE ANY HARM TO YOUR SERVER or    ");
-		ClayMessenger.sendConsole(ChatColor.WHITE +  "  YOUR SAFETY OF INFOMATION                   ");
-		ClayMessenger.sendConsole("");
-		ClayMessenger.sendConsole(ChatColor.WHITE +  "  CLAY VERSION: " + ChatColor.YELLOW + CLAY_VERSION.getVersion());
-		ClayMessenger.sendConsole("");
-		ClayMessenger.sendConsole(ChatColor.WHITE +  "          FIND MORE ABOUT CLAY HERE:          ");
-		ClayMessenger.sendConsole(ChatColor.YELLOW + "		      http://clay.site90.com            ");
-		ClayMessenger.sendConsole(ChatColor.YELLOW + " ******************************************** ");
-		ClayMessenger.sendConsole("");
+		ClayMessenger.sendConsole("This plugin uses Clay API " + CLAY_VERSION.getVersion());
+		ClayMessenger.sendConsole("Find more about Clay @ " + ChatColor.WHITE + "clay.site90.com");
+
 	}
 	
 	public static void onDisable() {
 		ClayPermission.onDisable();
-		
+
+		furnace_listener = null;
 	}
 	
 	public static String getWorldName() {
