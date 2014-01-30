@@ -3,7 +3,10 @@ package com.clay.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+
+import com.clay.core.Clay;
 
 public class FurnaceFuelManager {
 	private static ArrayList<FurnaceFuelBase> fuels = new ArrayList<FurnaceFuelBase>();
@@ -18,6 +21,7 @@ public class FurnaceFuelManager {
 			return false;
 		} else {
 			fuels.add(fuel);
+			Clay.logClay("[FURNACE-FUEL] Added Fuel Type '" + fuel.getName() + "' (" + fuel.getBurnTime() + ")");
 			return true;
 		}
 	}
@@ -42,7 +46,7 @@ public class FurnaceFuelManager {
 		return temp_list;
 	}
 	
-	public static boolean hasFuel(ItemStack item) {
+	public static boolean hasFuel(Material item) {
 		for(FurnaceFuelBase fuel : fuels) {
 			if(fuel.getItem() == item) {
 				return true;
@@ -58,7 +62,7 @@ public class FurnaceFuelManager {
 		}
 		
 		for(FurnaceFuelBase fuel : fuels) {
-			if(fuel.getName() == name) {
+			if(fuel.getName().toString() == name.toUpperCase()) {
 				return fuel;
 			}
 		}
@@ -66,7 +70,7 @@ public class FurnaceFuelManager {
 		return null;
 	}
 	
-	public static FurnaceFuelBase getFuel(ItemStack item) {
+	public static FurnaceFuelBase getFuel(Material item) {
 		if(item == null) {
 			return null;
 		}
