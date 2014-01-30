@@ -1,5 +1,9 @@
 package com.clay.core;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -91,6 +95,20 @@ public class ClayPlayer {
 		}
 		
 		player_reference.getInventory().addItem(item_reference);
+	}
+	
+	public static boolean isPremium(String player_name) {
+		Boolean premium = false;
+
+		try {
+			URL url = new URL("http://www.minecraft.net/haspaid.jsp?user=" + player_name);
+			String pr = new BufferedReader(new InputStreamReader(url.openStream())).readLine().toUpperCase();
+			premium = Boolean.valueOf(pr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return premium;
 	}
 	
 	public static int getInventoryCount(String player_name, ItemStack item_reference) {
